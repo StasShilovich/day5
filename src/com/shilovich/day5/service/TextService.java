@@ -8,7 +8,7 @@ public class TextService {
 
     public String performTask1ByStringBuilder(String text, int letterNumber, char symbol) {
         StringBuilder builder = new StringBuilder();
-        String[] strings = text.split(" ");
+        String[] strings = text.split("\\p{Blank}\\p{Punct}");
         for (String string : strings) {
             if (string.length() >= letterNumber) {
                 builder.append(string, 0, letterNumber - 1);

@@ -1,18 +1,19 @@
 package com.shilovich.day5.main;
 
-import com.shilovich.day5.reader.CustomFileReader;
-import com.shilovich.day5.service.TextService;
+import com.shilovich.day5.exception.TextReaderException;
+import com.shilovich.day5.reader.TextReader;
+import com.shilovich.day5.service.impl.TextReplacementByStringImpl;
 
 public class Main {
     public static void main(String[] args) {
-        CustomFileReader reader = new CustomFileReader();
-        TextService service = new TextService();
-        String file = reader.readFile();
-        String s1 = service.performTask1ByStringBuilder(file, 6, '|');
-        String s2 = service.performTask2ByStringBuilder(file, 'р', 'а', 'о');
-        String s3 = service.performTask3ByStringBuilder(file, 3, "шо");
-        String s4 = service.performTask4ByStringBuilder(file);
-        String s5 = service.performTask5ByStringBuilder(file, 5);
-        System.out.println(s5);
+        try {
+            TextReader reader1 = new TextReader();
+            String s = reader1.readFile();
+            TextReplacementByStringImpl replacement = new TextReplacementByStringImpl();
+            String s1 = replacement.replaceGivenLetter(s, 4, '$');
+            System.out.println(s1);
+        } catch (TextReaderException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
