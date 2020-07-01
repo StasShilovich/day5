@@ -5,7 +5,7 @@ import com.shilovich.day5.service.TextDeletion;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.shilovich.day5.constant.Constant.*;
+import static com.shilovich.day5.constant.TextConstants.*;
 
 public class TextDeletionByStringImpl implements TextDeletion {
     @Override

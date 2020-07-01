@@ -1,11 +1,11 @@
 package com.shilovich.day5.main;
 
-import com.shilovich.day5.constant.Constant;
 import com.shilovich.day5.exception.TextReaderException;
 import com.shilovich.day5.reader.TextReader;
 import com.shilovich.day5.service.TextDeletion;
 import com.shilovich.day5.service.TextReplacement;
 import com.shilovich.day5.service.impl.TextDeletionByStringImpl;
+import com.shilovich.day5.service.impl.TextReplacementByCharacterImpl;
 import com.shilovich.day5.service.impl.TextReplacementByStringImpl;
 
 import java.util.regex.Matcher;
@@ -23,16 +23,24 @@ public class Main {
                     'е', 'ё');
             String s3 = deletion.deleteSpecificWords(s, 5);
             String s4 = deletion.deleteAllNonLetterCharacters(s);
-            System.out.println(s4);
+            System.out.println();
+
+            TextReplacement charReplacement = new TextReplacementByCharacterImpl();
+            String s11 = charReplacement.replaceGivenLetter(s, 4, '$');
+            String s12 = charReplacement.replaceLetterCombination(s, 'н',
+                    'е', 'ё');
+            String text = "Через несокрушимый, высеченный из камня лабиринт" +
+                    " течет Нева с ее притоками, протоками и каналами.";
+            String s13 = charReplacement.replaceWordsBySubstring(text, 5, "lol");
+            System.out.println();
         } catch (TextReaderException e) {
             System.out.println(e.getMessage());
         }
         String text = "Через несокрушимый, высеченный из камня лабиринт" +
                 " течет Нева с ее притоками, протоками и каналами.";
-        String regex = "[^аАоОиИеЕёЁэЭыЫуУюЮяЯ]+";
-        Pattern pattern = Pattern.compile(Constant.LETTERS);
+        String regex = "[^аАоОиИеЕёЁэЭыЫуУюЮяЯ]";
+        Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text);
-
 
     }
 }

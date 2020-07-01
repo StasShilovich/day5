@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static com.shilovich.day5.constant.Constant.PATH;
+import static com.shilovich.day5.constant.TextConstants.PATH;
 
 public class TextReader {
     public String readFile() throws TextReaderException {

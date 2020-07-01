@@ -2,9 +2,9 @@ package com.shilovich.day5.service.impl;
 
 import com.shilovich.day5.service.TextReplacement;
 
-import static com.shilovich.day5.constant.Constant.EMPTY_LINE;
-import static com.shilovich.day5.constant.Constant.SPACE;
-import static com.shilovich.day5.constant.Constant.SPLIT_REGEX;
+import static com.shilovich.day5.constant.TextConstants.EMPTY_LINE;
+import static com.shilovich.day5.constant.TextConstants.SPACE;
+import static com.shilovich.day5.constant.TextConstants.SPLIT_REGEX;
 
 public class TextReplacementByStringImpl implements TextReplacement {
     @Override
