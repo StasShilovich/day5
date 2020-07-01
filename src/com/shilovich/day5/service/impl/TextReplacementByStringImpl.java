@@ -2,6 +2,7 @@ package com.shilovich.day5.service.impl;
 
 import com.shilovich.day5.service.TextReplacement;
 
+import static com.shilovich.day5.constant.Constant.EMPTY_LINE;
 import static com.shilovich.day5.constant.Constant.SPACE;
 import static com.shilovich.day5.constant.Constant.SPLIT_REGEX;
 
@@ -26,11 +27,33 @@ public class TextReplacementByStringImpl implements TextReplacement {
 
     @Override
     public String replaceLetterCombination(String text, char letterBefore, char wrongLetter, char correctLetter) {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        String[] strings = text.split(SPLIT_REGEX);
+        for (int i = 0; i < strings.length; i++) {
+            boolean isContains = strings[i].toLowerCase().contains(EMPTY_LINE + letterBefore + wrongLetter);
+            if (isContains) {
+                int indexOf = strings[i].toLowerCase().indexOf(EMPTY_LINE + letterBefore + wrongLetter);
+                builder.append(strings[i], 0, indexOf);
+                builder.append(letterBefore).append(correctLetter);
+                builder.append(strings[i], indexOf + 2, strings[i].length()).append(SPACE);
+            } else {
+                builder.append(strings[i]).append(SPACE);
+            }
+        }
+        return builder.toString();
     }
 
     @Override
     public String replaceWordsBySubstring(String text, int size, String substring) {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        String[] strings = text.split(SPLIT_REGEX);
+        for (int i = 0; i < strings.length; i++) {
+            if (strings[i].length() == size) {
+                builder.append(substring).append(SPACE);
+            } else {
+                builder.append(strings[i]).append(SPACE);
+            }
+        }
+        return builder.toString();
     }
 }
