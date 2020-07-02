@@ -8,4 +8,6 @@ public final class TextConstants {
     public static final String VOWELS = "[^аАоОиИеЕёЁэЭыЫуУюЮяЯ]";
     public static final String LETTERS = "\\w*";
     public static final char CHAR_SPACE = ' ';
+    public static final char CHAR_EMPTY_LINE = 0;
+    public static final String PUNCT = "\\p{Punct}";
 }
