@@ -6,15 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static com.shilovich.day5.constant.TextConstants.*;
+import static com.shilovich.day5.constant.TextConstants.CHAR_SPACE;
+import static com.shilovich.day5.constant.TextConstants.PUNCT;
 
 public class TextReplacementByCharacterImpl implements TextReplacement {
     @Override
     public String replaceGivenLetter(String text, int letterIndex, char newLetter) {
         char[] chars = text.toCharArray();
         int count = 0;
+        Pattern pattern = Pattern.compile(PUNCT);
         for (int i = 0; i < chars.length; i++) {
-            if (chars[i] != CHAR_SPACE) {
+            if (chars[i] != CHAR_SPACE && !pattern.matcher(Character.toString(chars[i])).matches()) {
                 count++;
                 if (count == letterIndex) {
                     chars[i] = newLetter;
@@ -44,21 +46,21 @@ public class TextReplacementByCharacterImpl implements TextReplacement {
         List<String> result = new ArrayList();
         Pattern pattern = Pattern.compile(PUNCT);
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i] != CHAR_SPACE && !pattern.matcher(Character.toString(chars[i])).matches()) {
-                builder.append(chars[i]);
+        for (char aChar : chars) {
+            if (aChar != CHAR_SPACE && !pattern.matcher(Character.toString(aChar)).matches()) {
+                builder.append(aChar);
             } else if (builder.toString().length() == size) {
                 result.add(substring);
-                result.add(Character.toString(chars[i]));
+                result.add(Character.toString(aChar));
                 builder.setLength(0);
             } else {
                 result.add(builder.toString());
-                result.add(Character.toString(chars[i]));
+                result.add(Character.toString(aChar));
                 builder.setLength(0);
             }
         }
-        for (int i = 0; i < result.size(); i++) {
-            builder.append(result.get(i));
+        for (String s : result) {
+            builder.append(s);
         }
         return builder.toString();
     }

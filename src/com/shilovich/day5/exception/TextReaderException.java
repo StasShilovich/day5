@@ -1,6 +1,6 @@
 package com.shilovich.day5.exception;
 
-public class TextReaderException extends Exception{
+public class TextReaderException extends Exception {
     public TextReaderException() {
         super();
     }

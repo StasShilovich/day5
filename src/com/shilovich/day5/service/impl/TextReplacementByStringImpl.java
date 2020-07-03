@@ -11,8 +11,7 @@ public class TextReplacementByStringImpl implements TextReplacement {
     public String replaceGivenLetter(String text, int letterIndex, char newLetter) {
         StringBuilder builder = new StringBuilder();
         String[] strings = text.split(SPLIT_REGEX);
-        for (int i = 0; i < strings.length; i++) {
-            String string = strings[i];
+        for (String string : strings) {
             if (string.length() >= letterIndex) {
                 builder.append(string, 0, letterIndex - 1);
                 builder.append(newLetter);
@@ -29,15 +28,15 @@ public class TextReplacementByStringImpl implements TextReplacement {
     public String replaceLetterCombination(String text, char letterBefore, char wrongLetter, char correctLetter) {
         StringBuilder builder = new StringBuilder();
         String[] strings = text.split(SPLIT_REGEX);
-        for (int i = 0; i < strings.length; i++) {
-            boolean isContains = strings[i].toLowerCase().contains(EMPTY_LINE + letterBefore + wrongLetter);
+        for (String string : strings) {
+            boolean isContains = string.toLowerCase().contains(EMPTY_LINE + letterBefore + wrongLetter);
             if (isContains) {
-                int indexOf = strings[i].toLowerCase().indexOf(EMPTY_LINE + letterBefore + wrongLetter);
-                builder.append(strings[i], 0, indexOf);
+                int indexOf = string.toLowerCase().indexOf(EMPTY_LINE + letterBefore + wrongLetter);
+                builder.append(string, 0, indexOf);
                 builder.append(letterBefore).append(correctLetter);
-                builder.append(strings[i], indexOf + 2, strings[i].length()).append(SPACE);
+                builder.append(string, indexOf + 2, string.length()).append(SPACE);
             } else {
-                builder.append(strings[i]).append(SPACE);
+                builder.append(string).append(SPACE);
             }
         }
         return builder.toString();
@@ -47,11 +46,11 @@ public class TextReplacementByStringImpl implements TextReplacement {
     public String replaceWordsBySubstring(String text, int size, String substring) {
         StringBuilder builder = new StringBuilder();
         String[] strings = text.split(SPLIT_REGEX);
-        for (int i = 0; i < strings.length; i++) {
-            if (strings[i].length() == size) {
+        for (String string : strings) {
+            if (string.length() == size) {
                 builder.append(substring).append(SPACE);
             } else {
-                builder.append(strings[i]).append(SPACE);
+                builder.append(string).append(SPACE);
             }
         }
         return builder.toString();
